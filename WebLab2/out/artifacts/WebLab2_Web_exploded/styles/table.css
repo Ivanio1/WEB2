@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.table-wrapper {
+  max-width: 1150px;
+  min-width: 700px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.table-content {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.table {
+  border: 1px solid #EEEEEE;
+}
+
+.table-header {
+  display: flex;
+  width: 100%;
+  background: #000;
+  padding: 18px 0;
+}
+
+.table-row {
+  display: flex;
+  width: 100%;
+  padding: 18px 0;
+}
+
+.table-row:nth-of-type(odd) {
+  background: #EEEEEE;
+}
+
+.table-data,
+.header__item {
+  flex: 1 1 20%;
+  text-align: center;
+}
+
+.table-header div {
+  text-transform: uppercase;
+}
+
+.filter__link {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width:440px) {
+  .table-content {
+    max-height: 30vh;
+    overflow: auto;
+  }
+
+}
+
+@media (min-width:1150px) {
+  .table-content {
+    max-height: 40vh;
+    overflow: auto;
+  }
+
+}
