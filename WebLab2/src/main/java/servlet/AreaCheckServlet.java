@@ -61,8 +61,6 @@ public class AreaCheckServlet extends HttpServlet {
                         .append("<div class=\"table-data\">").append(element.getY()).append("</div>\n")
                         .append("<div class=\"table-data\">").append(element.getR()).append("</div>\n")
                         .append("<div class=\"table-data\">").append(element.getCorrectWords()).append("</div>\n")
-                        .append("<div class=\"table-data\">").append(element.getRequestTime()).append("</div>\n")
-                        .append("<div class=\"table-data\">").append(element.getExecutionTime()).append("</div>\n")
                         .append("</div>");
             }
             writer.println(tableRow);

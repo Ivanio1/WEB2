@@ -10,6 +10,7 @@ const checkElement = function (elemAddress) {
             if (value < 1 || value > 4 || isNaN(value) || /[\s]+/.test(elem.val()) || elem.val() ===
                 "undefined" || elem.val() === "") {
                 $(elem).removeClass().addClass("is-invalid");
+                document.querySelector('#error-log').innerHTML ="Радиус - целое число от 1 до 4"
                 return false;
             }
         }

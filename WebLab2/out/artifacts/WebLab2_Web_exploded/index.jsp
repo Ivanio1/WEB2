@@ -89,9 +89,7 @@
                     <div class="header__item"><a class="filter__link" id="y-table">Y</a></div>
                     <div class="header__item"><a class="filter__link" id="r-table">R</a></div>
                     <div class="header__item"><a class="filter__link" id="result-table">result</a></div>
-                    <div class="header__item"><a class="filter__link" id="time-table">Current Time</a></div>
-                    <div class="header__item"><a class="filter__link" id="cr-time-table">Execution Time</a>
-                    </div>
+                     </div>
                 </div>
                 <div class="table-content" id="ans" >
                     <% Object attribute = request.getSession().getServletContext().getAttribute("userData");
@@ -103,8 +101,6 @@
                         <div class="table-data"><%= element.getY() %></div>
                         <div class="table-data"><%= element.getR() %></div>
                         <div class="table-data"><% out.print(element.getCorrectWords()); %></div>
-                        <div class="table-data"><%= element.getRequestTime() %></div>
-                        <div class="table-data"><%= element.getExecutionTime() %></div>
                     </div>
                     <%}} %>
                 </div>
