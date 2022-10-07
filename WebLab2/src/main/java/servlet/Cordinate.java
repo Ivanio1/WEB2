@@ -1,9 +1,10 @@
 package servlet;
 
+import java.io.Serializable;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-public class Cordinate {
+public class Cordinate implements Serializable {
     private double x;
     private double y;
     private double r;
@@ -66,7 +67,7 @@ public class Cordinate {
     }
 
     public double getExecutionTime() {
-        return executionTime/1000000.0;
+        return executionTime/1000.0;
     }
 
     public void setExecutionTime(long executionTime) {

@@ -7,7 +7,7 @@ const checkElement = function (elemAddress) {
                 .val().replace(",", ".") === ""))
                 document.getElementById("r-value-select").value = elem.val().slice(0, elem.val().length -
                     1);
-            if (value < 1 || value > 4 || isNaN(value) || /[\s]+/.test(elem.val()) || elem.val() ===
+            if (value < 1 || value > 4 ||elem.val()==="-"|| isNaN(value) || /[\s]+/.test(elem.val()) || elem.val() ===
                 "undefined" || elem.val() === "") {
                 $(elem).removeClass().addClass("is-invalid");
                 document.querySelector('#error-log').innerHTML ="Радиус - целое число от 1 до 4"
@@ -67,8 +67,11 @@ const submit = function (e) {
         }
     })
 
+
 };
+
 function sendReq(x){
+
     $.ajax({
         type: "POST",
         url: "controller",
@@ -76,7 +79,8 @@ function sendReq(x){
             {
                 r_value: $("#r-value-select").val(),
                 y_value: $("#y-value-select").val(),
-                x_value: x
+                x_value: x,
+                time_zone: new Date().getTimezoneOffset()
             },
         success: data => document.querySelector('#ans').innerHTML = data,
         error: (jqXHR, textStatus, errorThrown) =>
@@ -86,7 +90,6 @@ function sendReq(x){
 }
 
 const clear = function(e) {
-    if (confirm('Вы точно хотите очистить таблицу??')) {
         e.preventDefault();
         $.ajax({
             type: "POST",
@@ -99,14 +102,13 @@ const clear = function(e) {
                 const plot_canvas = document.getElementById("plot");
                 const context = plot_canvas.getContext('2d');
                 context.clearRect(0, 0, plot_canvas.width, plot_canvas.height);
-                drawGraph();
+                drawGraph(value_R);
             },
             error: (jqXHR, textStatus, errorThrown) =>
                 document.querySelector('#error-log').innerHTML = "Ошибка HTTP: " + jqXHR.status +
                     "(" + errorThrown + ")",
             dataType: "html"
         });
-    }
 };
 
 document.addEventListener('DOMContentLoaded', ()=> {

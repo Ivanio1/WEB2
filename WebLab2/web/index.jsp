@@ -2,6 +2,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="servlet.Cordinate" %>
 <%@ page import="java.util.Vector" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.time.format.FormatStyle" %>
+<%@ page import="java.util.Locale" %>
+<%@ page import="java.time.ZoneId" %>
+<%@ page import="java.time.Instant" %>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -71,8 +76,8 @@
                                value=""/>
                     </div>
                     <div class="form-input-r"><label for="r-value-select"><strong>R: </strong></label>
-                        <input id="r-value-select" maxlength="1" name="r_value" placeholder="1 ... 4" type="text"
-                               value=""/>
+                        <input id="r-value-select" maxlength="4" name="r_value" placeholder="1 ... 4" type="text"
+                               value="" onchange="set_R_value(this.id)" onkeyup="this.value = this.value.replace(/[^0-9\.]/g, '')"/>
                     </div>
                     <div class="form-buttons">
                         <button class="check-button" id="submitButton" type="submit">Проверить</button>
@@ -90,7 +95,7 @@
                     <div class="header__item"><a class="filter__link" id="r-table">R</a></div>
                     <div class="header__item"><a class="filter__link" id="result-table">result</a></div>
                     <div class="header__item"><a class="filter__link" id="time-table">Current Time</a></div>
-                    <div class="header__item"><a class="filter__link" id="cr-time-table">Execution Time</a>
+                    <div class="header__item"><a class="filter__link" id="cr-time-table">Execution Time(ms)</a>
                     </div>
                 </div>
                 <div class="table-content" id="ans" >
@@ -106,24 +111,18 @@
                         <div class="table-data"><%= element.getRequestTime() %></div>
                         <div class="table-data"><%= element.getExecutionTime() %></div>
                     </div>
-                    <%}} %>
+                    <%}}
+                    %>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <footer class="centered">
-        <span class="student-info-footer">&copy;Ivanio1, 2022</span>
-        <p class="student-footer-icon">
-            <a href="https://github.com/Ivanio1" title="GitHub">
-                <img alt="Developer GitHub" src="img/github_PNG19.png">
-            </a>
-        </p>
-    </footer>
 </div>
 </body>
 <script type="text/javascript">
-    $(document).ready(drawGraph());
+    $(document).ready(drawGraph(value_R));
 </script>
+
 </html>
