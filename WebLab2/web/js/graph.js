@@ -65,13 +65,23 @@ const drawGraph = function (r) {
     plot_context.moveTo(100, 145)
     plot_context.lineTo(100, 155)
     plot_context.closePath();
-    plot_context.fillText(r / 2, 90, 140);
+    plot_context.fillText(-r / 2, 90, 140);
+
+    plot_context.moveTo(203, 145)
+    plot_context.lineTo(203, 155)
+    plot_context.closePath();
+    plot_context.fillText(r / 2, 200, 140);
 
 
     plot_context.moveTo(canvWidth / 2 - 5, 250)
     plot_context.lineTo(canvWidth / 2 + 5, 250)
     plot_context.closePath();
-    plot_context.fillText(r, canvWidth / 2 - 15, 265);
+    plot_context.fillText(-r, canvWidth / 2 - 15, 265);
+
+    plot_context.moveTo(canvWidth / 2 - 5, 203)
+    plot_context.lineTo(canvWidth / 2 + 5, 203)
+    plot_context.closePath();
+    plot_context.fillText(-r/2, canvWidth / 2 - 15, 215);
 
     plot_context.moveTo(canvWidth / 2 - 5, 100)
     plot_context.lineTo(canvWidth / 2 + 5, 100)

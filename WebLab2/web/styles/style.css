@@ -25,9 +25,11 @@ body,
     background-image: url("../img/ScholarlyLeftBrahmancow-max-1mb.gif");
 
 }
-#gif{
+
+#gif {
 
 }
+
 .img-form {
     display: flex;
     flex-direction: row;
@@ -52,7 +54,7 @@ footer {
     text-align: center;
 }
 
-.centered>* {
+.centered > * {
     margin: 0 auto;
 }
 
@@ -65,7 +67,7 @@ header {
     font-size: 20px;
     color: white;
     padding: 10px;
-    background-color:rgb(0,89,206);
+    background-color: rgb(0, 89, 206);
 }
 
 body {
@@ -80,7 +82,7 @@ body {
     position: relative;
 }
 
-.areas-img>img {
+.areas-img > img {
     height: 200px;
     width: 200px;
 }
@@ -116,7 +118,7 @@ body {
 }
 
 .check-button {
-    background-color: rgb(0,89,206);
+    background-color: rgb(0, 89, 206);
     border: 1px solid black;
     margin: 2%;
 
@@ -126,7 +128,7 @@ body {
     background-color: rgb(151, 186, 231);
 }
 
-.check-buttons>p {
+.check-buttons > p {
     padding: 0 2px;
 }
 
@@ -136,7 +138,7 @@ body {
 }
 
 .clear-button {
-    background-color: rgb(0,89,206);
+    background-color: rgb(0, 89, 206);
     border: 1px solid black;
 }
 
@@ -166,7 +168,8 @@ button {
 .form-buttons {
     margin: 3%
 }
-#error-log{
+
+#error-log {
     color: red
 }
 
@@ -178,11 +181,11 @@ button {
 footer {
     flex: 0 0 auto;
     color: white;
-    background-color:rgb(0,89,206);
+    background-color: rgb(0, 89, 206);
 
 }
 
-.student-footer-icon>a>img {
+.student-footer-icon > a > img {
     height: 25px;
     width: 25px;
     padding: 2px;
@@ -192,7 +195,7 @@ footer {
     font-size: small;
 }
 
-@media (min-width:100px) {
+@media (min-width: 100px) {
     .content {
         flex-direction: column;
         text-align: center;
@@ -219,7 +222,7 @@ footer {
     }
 }
 
-@media (min-width:440px) {
+@media (min-width: 440px) {
     .content {
         flex-direction: column;
         text-align: center;
@@ -247,7 +250,7 @@ footer {
     }
 }
 
-@media (min-width:1150px) {
+@media (min-width: 1150px) {
     .content {
         flex-direction: row;
     }
@@ -265,15 +268,26 @@ footer {
 }
 
 .modal {
+    opacity: 100%;
+    height: 130px;
+    width: 210px;
     position: fixed;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    .display: flex;
+    bottom: 50%;
+    left: 40%;
+    border: 2px solid black;
+    border-radius: 7px;
+    background-color: black;
+    margin: auto;
+
 }
-
-
-
-.modal.closed {
-    display: none;
+#modal{
+    background: dimgray;
+    height: 100%;
+    opacity: 0.95;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0;
 }

@@ -71,7 +71,6 @@ const submit = function (e) {
 };
 
 function sendReq(x){
-
     $.ajax({
         type: "POST",
         url: "controller",
@@ -109,10 +108,25 @@ const clear = function(e) {
                     "(" + errorThrown + ")",
             dataType: "html"
         });
+    $("#modal").css("visibility","hidden")
+};
+const open_modal=function(e){
+    e.preventDefault();
+    $("#modal").css("visibility","visible")
+};
+const close_modal=function(e){
+    e.preventDefault();
+    $("#modal").css("visibility","hidden")
 };
 
 document.addEventListener('DOMContentLoaded', ()=> {
     document.getElementById("plot").addEventListener('click', drawPoint);
     document.querySelector('#submitButton').addEventListener('click', submit);
     document.querySelector('#clearButton').addEventListener('click', clear);
+    document.querySelector('#modalButton').addEventListener('click', open_modal);
+    document.querySelector('#closeButton').addEventListener('click', close_modal);
+    document.querySelector('#modal').addEventListener('click', close_modal);
+
 });
+
+

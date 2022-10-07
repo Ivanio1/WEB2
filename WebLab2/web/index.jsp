@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="servlet.Cordinate" %>
 <%@ page import="java.util.Vector" %>
@@ -77,17 +76,18 @@
                     </div>
                     <div class="form-input-r"><label for="r-value-select"><strong>R: </strong></label>
                         <input id="r-value-select" maxlength="4" name="r_value" placeholder="1 ... 4" type="text"
-                               value="" onchange="set_R_value(this.id)" onkeyup="this.value = this.value.replace(/[^0-9\.]/g, '')"/>
+                               value="" onchange="set_R_value(this.id)"
+                               onkeyup="this.value = this.value.replace(/[^0-9\.]/g, '')"/>
                     </div>
                     <div class="form-buttons">
                         <button class="check-button" id="submitButton" type="submit">Проверить</button>
-                        <button class="clear-button" id="clearButton" type="button">Очистить</button>
+                        <button class="clear-button" id="modalButton" type="button">Очистить</button>
                     </div>
                     <div id="error-log"></div>
                 </div>
             </form>
         </div>
-        <div class="table-wrapper" >
+        <div class="table-wrapper">
             <div class="table">
                 <div class="table-header">
                     <div class="header__item"><a class="filter__link" id="x-table">X</a></div>
@@ -98,28 +98,56 @@
                     <div class="header__item"><a class="filter__link" id="cr-time-table">Execution Time(ms)</a>
                     </div>
                 </div>
-                <div class="table-content" id="ans" >
+                <div class="table-content" id="ans">
                     <% Object attribute = request.getSession().getServletContext().getAttribute("userData");
                         if (!(attribute == null || ((Vector<Cordinate>) attribute).size() == 0)) {
                             Vector<Cordinate> coordinates = (Vector<Cordinate>) attribute;
                             for (Cordinate element : coordinates) {%>
                     <div class="table-row">
-                        <div class="table-data"><%= element.getX() %></div>
-                        <div class="table-data"><%= element.getY() %></div>
-                        <div class="table-data"><%= element.getR() %></div>
+                        <div class="table-data"><%= element.getX() %>
+                        </div>
+                        <div class="table-data"><%= element.getY() %>
+                        </div>
+                        <div class="table-data"><%= element.getR() %>
+                        </div>
                         <div class="table-data"><% out.print(element.getCorrectWords()); %></div>
-                        <div class="table-data"><%= element.getRequestTime() %></div>
-                        <div class="table-data"><%= element.getExecutionTime() %></div>
+                        <div class="table-data"><%= element.getRequestTime() %>
+                        </div>
+                        <div class="table-data"><%= element.getExecutionTime() %>
+                        </div>
                     </div>
-                    <%}}
+                    <%
+                            }
+                        }
                     %>
                 </div>
             </div>
         </div>
 
     </div>
-
+    <!-- Первое модальное окно -->
+    <div id="modal" style="visibility: hidden">
+        <div class="modal" id="win" style="opacity: 1"> <!-- Основной блок модального окна -->
+            <table style="height: 130px;width: 130px">
+                <tr>
+                    <td colspan="2" style="alignment: center">
+                        <div class="modal__text" style="color: wheat">Вы точно хотите очистить таблицу?</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="clear-button" id="clearButton" type="button">Да</button>
+                    </td>
+                    <td>
+                        <button class="clear-button" id="closeButton" type="button">Нет</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
+
+
 </body>
 <script type="text/javascript">
     $(document).ready(drawGraph(value_R));
