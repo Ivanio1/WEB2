@@ -127,7 +127,7 @@
     </div>
     <!-- Первое модальное окно -->
     <div id="modal" style="visibility: hidden">
-        <div class="modal" id="win" style="opacity: 1"> <!-- Основной блок модального окна -->
+        <div class="modal" id="win" style=""> <!-- Основной блок модального окна -->
             <table style="height: 130px;width: 130px">
                 <tr>
                     <td colspan="2" style="alignment: center">

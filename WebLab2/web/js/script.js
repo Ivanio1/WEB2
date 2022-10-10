@@ -7,10 +7,10 @@ const checkElement = function (elemAddress) {
                 .val().replace(",", ".") === ""))
                 document.getElementById("r-value-select").value = elem.val().slice(0, elem.val().length -
                     1);
-            if (value < 1 || value > 4 ||elem.val()==="-"|| isNaN(value) || /[\s]+/.test(elem.val()) || elem.val() ===
+            if (value < 1 || value > 4 || elem.val() === "-" || isNaN(value) || /[\s]+/.test(elem.val()) || elem.val() ===
                 "undefined" || elem.val() === "") {
                 $(elem).removeClass().addClass("is-invalid");
-                document.querySelector('#error-log').innerHTML ="Радиус - целое число от 1 до 4"
+                document.querySelector('#error-log').innerHTML = "Радиус - целое число от 1 до 4"
                 return false;
             }
         }
@@ -70,7 +70,7 @@ const submit = function (e) {
 
 };
 
-function sendReq(x){
+function sendReq(x) {
     $.ajax({
         type: "POST",
         url: "controller",
@@ -88,45 +88,49 @@ function sendReq(x){
     });
 }
 
-const clear = function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "controller",
-            data: {
-                type: "clear"
-            },
-            success: data => {
-                document.querySelector('#ans').innerHTML = data;
-                const plot_canvas = document.getElementById("plot");
-                const context = plot_canvas.getContext('2d');
-                context.clearRect(0, 0, plot_canvas.width, plot_canvas.height);
-                drawGraph(value_R);
-            },
-            error: (jqXHR, textStatus, errorThrown) =>
-                document.querySelector('#error-log').innerHTML = "Ошибка HTTP: " + jqXHR.status +
-                    "(" + errorThrown + ")",
-            dataType: "html"
-        });
-    $("#modal").css("visibility","hidden")
-};
-const open_modal=function(e){
+const clear = function (e) {
     e.preventDefault();
-    $("#modal").css("visibility","visible")
+    $.ajax({
+        type: "POST",
+        url: "controller",
+        data: {
+            type: "clear"
+        },
+        success: data => {
+            document.querySelector('#ans').innerHTML = data;
+            const plot_canvas = document.getElementById("plot");
+            const context = plot_canvas.getContext('2d');
+            context.clearRect(0, 0, plot_canvas.width, plot_canvas.height);
+            drawGraph(value_R);
+        },
+        error: (jqXHR, textStatus, errorThrown) =>
+            document.querySelector('#error-log').innerHTML = "Ошибка HTTP: " + jqXHR.status +
+                "(" + errorThrown + ")",
+        dataType: "html"
+    });
+    $("#modal").css("visibility", "hidden")
+
 };
-const close_modal=function(e){
+const open_modal = function (e) {
     e.preventDefault();
-    $("#modal").css("visibility","hidden")
+    $("#modal").css("visibility", "visible")
+};
+const close_modal = function (e) {
+    e.preventDefault();
+    $("#modal").css("visibility", "hidden")
+};
+const def = function (e) {
+    e.stopPropagation();
 };
 
-document.addEventListener('DOMContentLoaded', ()=> {
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("plot").addEventListener('click', drawPoint);
     document.querySelector('#submitButton').addEventListener('click', submit);
     document.querySelector('#clearButton').addEventListener('click', clear);
     document.querySelector('#modalButton').addEventListener('click', open_modal);
     document.querySelector('#closeButton').addEventListener('click', close_modal);
     document.querySelector('#modal').addEventListener('click', close_modal);
-
+    document.querySelector('#win').addEventListener('click', def)
 });
 
 
